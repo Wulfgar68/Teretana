@@ -1,8 +1,14 @@
 import mysql.connector
 from mysql.connector import Error
 
+print("Pocetak")
+
+# Inicijalizacija varijable connection
+connection = None
+
+# Uspostavljanje veze s bazom podataka
 try:
-    print("Connecting to MySQL database...")
+    print("Spajanje na bazu...")
     connection = mysql.connector.connect(
         host='localhost',
         database='Luka PIS',
@@ -10,12 +16,12 @@ try:
         password='luka23012005'
     )
     if connection.is_connected():
-        print("Connection to MySQL database was successful")
+        print("Uspjesno spojeno")
 
 except Error as e:
-    print("Error while connecting to MySQL", e)
+    print("Error prilikom spajanja na MySQL", e)
 
 finally:
-    if connection.is_connected():
+    if connection is not None and connection.is_connected():
         connection.close()
-        print("MySQL connection is closed")
+        print("MySQL veza je zatvorena")

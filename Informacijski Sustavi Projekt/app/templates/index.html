@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>To-Do List</title>
+    <title>To-Do Lista</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <form action="/add" method="post">
-        <input type="text" name="title" placeholder="Task Title" required>
-        <textarea name="description" placeholder="Task Description"></textarea>
-        <button type="submit">Add Task</button>
+    <h1>To-Do Lista</h1>
+    <form action="/dodaj" method="post">
+        <input type="text" name="naslov" placeholder="Naslov zadatka" required>
+        <textarea name="opis" placeholder="Opis zadatka"></textarea>
+        <button type="submit">Dodaj Zadatak</button>
     </form>
     <ul>
-        {% for task in tasks %}
+        {% for zadatak in zadaci %}
             <li>
-                <h2>{{ task.title }}</h2>
-                <p>{{ task.description }}</p>
-                <form action="/update/{{ task.id }}" method="post">
-                    <input type="text" name="title" value="{{ task.title }}" required>
-                    <textarea name="description">{{ task.description }}</textarea>
-                    <button type="submit">Update</button>
+                <h2>{{ zadatak.naslov }}</h2>
+                <p>{{ zadatak.opis }}</p>
+                <form action="/azuriraj/{{ zadatak.id }}" method="post">
+                    <input type="text" name="naslov" value="{{ zadatak.naslov }}" required>
+                    <textarea name="opis">{{ zadatak.opis }}</textarea>
+                    <button type="submit">Ažuriraj</button>
                 </form>
-                <form action="/delete/{{ task.id }}" method="post">
-                    <button type="submit">Delete</button>
+                <form action="/izbrisi/{{ zadatak.id }}" method="post">
+                    <button type="submit">Izbriši</button>
                 </form>
             </li>
         {% endfor %}

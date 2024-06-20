@@ -1,54 +1,54 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from flask_mysqldb import MySQL
-import MySQLdb.cursors
+from flask import Flask, request, jsonify, render_template, redirect, url_for # type: ignore
+from flask_mysqldb import MySQL# type: ignore
+import MySQLdb.cursors # type: ignore
 
-# Initialize the Flask application
+# Inicijalizacija Flask aplikacije
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
-# Initialize MySQL connection
+# Inicijalizacija MySQL veze
 mysql = MySQL(app)
 
 @app.route('/')
 def index():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM tasks')
-    tasks = cursor.fetchall()
-    return render_template('index.html', tasks=tasks)
+    cursor.execute('SELECT * FROM zadaci')
+    zadaci = cursor.fetchall()
+    return render_template('index.html', zadaci=zadaci)
 
-# Create Task
-@app.route('/add', methods=['POST'])
-def add_task():
-    title = request.form['title']
-    description = request.form['description']
+# Kreiraj zadatak
+@app.route('/dodaj', methods=['POST'])
+def dodaj_zadatak():
+    naslov = request.form['naslov']
+    opis = request.form['opis']
     cursor = mysql.connection.cursor()
-    cursor.execute('INSERT INTO tasks (title, description) VALUES (%s, %s)', (title, description))
+    cursor.execute('INSERT INTO zadaci (naslov, opis) VALUES (%s, %s)', (naslov, opis))
     mysql.connection.commit()
     return redirect(url_for('index'))
 
-# Read Tasks
-@app.route('/tasks', methods=['GET'])
-def get_tasks():
+# Prikaz zadataka
+@app.route('/zadaci', methods=['GET'])
+def prikazi_zadatke():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM tasks')
-    tasks = cursor.fetchall()
-    return jsonify(tasks)
+    cursor.execute('SELECT * FROM zadaci')
+    zadaci = cursor.fetchall()
+    return jsonify(zadaci)
 
-# Update Task
-@app.route('/update/<int:id>', methods=['POST'])
-def update_task(id):
-    title = request.form['title']
-    description = request.form['description']
+# Ažuriraj zadatak
+@app.route('/azuriraj/<int:id>', methods=['POST'])
+def azuriraj_zadatak(id):
+    naslov = request.form['naslov']
+    opis = request.form['opis']
     cursor = mysql.connection.cursor()
-    cursor.execute('UPDATE tasks SET title = %s, description = %s WHERE id = %s', (title, description, id))
+    cursor.execute('UPDATE zadaci SET naslov = %s, opis = %s WHERE id = %s', (naslov, opis, id))
     mysql.connection.commit()
     return redirect(url_for('index'))
 
-# Delete Task
-@app.route('/delete/<int:id>', methods=['POST'])
-def delete_task(id):
+# Izbriši zadatak
+@app.route('/izbrisi/<int:id>', methods=['POST'])
+def izbrisi_zadatak(id):
     cursor = mysql.connection.cursor()
-    cursor.execute('DELETE FROM tasks WHERE id = %s', (id,))
+    cursor.execute('DELETE FROM zadaci WHERE id = %s', (id,))
     mysql.connection.commit()
     return redirect(url_for('index'))
 
