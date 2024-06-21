@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Član Detalji</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Član Detalji</h1>
+    <div class="member-details">
+        <h2>{{ clan.prezime }}</h2>
+        <p>Preplata: {{ 'Da' if clan.preplata else 'Ne' }}</p>
+        <p>Vrijeme u prostoru: {{ clan.vrijeme_u_prostoru }}</p>
+        <p>Datum preplate: {{ clan.preplata_datum }}</p>
+        <p>Datum isteka preplate: {{ clan.preplata_istece }}</p>
+        <a href="{{ url_for('index') }}">Natrag na popis članova</a>
+    </div>
+</body>
+</html>

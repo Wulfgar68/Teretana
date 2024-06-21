@@ -1,5 +1,5 @@
-import mysql.connector
-from mysql.connector import Error
+import mysql.connector# type: ignore
+from mysql.connector import Error # type: ignore
 
 print("Pocetak")
 
