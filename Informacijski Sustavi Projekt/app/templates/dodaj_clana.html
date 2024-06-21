@@ -1,0 +1,27 @@
+{% extends "osnova.html" %}
+
+{% block title %}Dodaj Člana{% endblock %}
+
+{% block content %}
+    <h1>Dodaj Člana</h1>
+    <form action="{{ url_for('dodaj_clana') }}" method="post">
+        <div class="mb-3">
+            <label for="ime" class="form-label">Ime</label>
+            <input type="text" class="form-control" id="ime" name="ime" required>
+        </div>
+        <div class="mb-3">
+            <label for="prezime" class="form-label">Prezime</label>
+            <input type="text" class="form-control" id="prezime" name="prezime" required>
+        </div>
+        <div class="mb-3">
+            <label for="preplata" class="form-label">Preplata</label>
+            <select class="form-select" id="preplata" name="preplata" required>
+                <option value="1">1 mjesec</option>
+                <option value="3">3 mjeseca</option>
+                <option value="6">6 mjeseci</option>
+                <option value="12">1 godina</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Dodaj člana</button>
+    </form>
+{% endblock %}

@@ -1,45 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Članovi</title>
+    <title>Teretana</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Popis članova</h1>
-    <form action="/dodaj" method="post">
-        <input type="text" name="ime" placeholder="Ime" required>
-        <input type="text" name="prezime" placeholder="Prezime" required>
-        <label for="preplata">Preplata</label>
-        <select name="preplata" id="preplata" required>
-            <option value="1">1 mjesec</option>
-            <option value="3">3 mjeseca</option>
-            <option value="6">6 mjeseci</option>
-            <option value="12">1 godina</option>
-        </select>
-        <button type="submit">Dodaj člana</button>
-    </form>
-    <ul>
-        {% for clan in clanovi %}
-            <li>
-                <h2>{{ clan.prezime }}, {{ clan.ime }}</h2>
-                <p>Preplata: {{ 'Da' if clan.preplata else 'Ne' }}</p>
-                <p>Datum preplate: {{ clan.preplata_datum }}</p>
-                <p>Datum isteka preplate: {{ clan.preplata_istece }}</p>
-                <a href="{{ url_for('detalji_clana', korisnik_id=clan.korisnik_id) }}">Detalji</a>
-                <form action="/azuriraj/{{ clan.korisnik_id }}" method="post">
-                    <input type="text" name="ime" value="{{ clan.ime }}" required>
-                    <input type="text" name="prezime" value="{{ clan.prezime }}" required>
-                    <label for="preplata{{ clan.korisnik_id }}">Preplata</label>
-                    <input type="checkbox" name="preplata" value="1" id="preplata{{ clan.korisnik_id }}" {% if clan.preplata %}checked{% endif %}>
-                    <input type="date" name="preplata_datum" value="{{ clan.preplata_datum }}" required>
-                    <input type="date" name="preplata_istece" value="{{ clan.preplata_istece }}" required>
-                    <button type="submit">Ažuriraj</button>
-                </form>
-                <form action="/izbrisi/{{ clan.korisnik_id }}" method="post">
-                    <button type="submit">Izbriši</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+    <h1>Dobrodošli u Teretanu</h1>
+    <nav>
+        <a href="{{ url_for('dodaj_clana') }}">Dodaj Člana</a>
+        <a href="{{ url_for('upravljaj_clanovima') }}">Upravljaj Članovima</a>
+    </nav>
 </body>
 </html>
