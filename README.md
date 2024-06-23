@@ -2,7 +2,7 @@
 
 ## Use case
 
-![Use Case Diagram]([https://imgur.com/a/iAgHgi3](https://i.imgur.com/hE2wG3m.png))
+![Use Case Diagram](https://github.com/Wulfgar68/Teretana/assets/69584543/e0a5c9e8-afa7-40b7-8f97-fada5282e942)
 
 Ovaj web servis omogućava administratorima teretane upravljanje članovima teretane putem sljedećih funkcionalnosti:
 - **Dodavanje člana**: Administrator može dodati novog člana u sustav s osnovnim informacijama kao što su ime, prezime, i trajanje preplate.
