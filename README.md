@@ -2,6 +2,8 @@
 
 ## Use case
 
+![Use Case Diagram](Teretana PIS.png)
+
 Ovaj web servis omogućava administratorima teretane upravljanje članovima teretane putem sljedećih funkcionalnosti:
 - **Dodavanje člana**: Administrator može dodati novog člana u sustav s osnovnim informacijama kao što su ime, prezime, i trajanje preplate.
 - **Ažuriranje člana**: Administrator može ažurirati informacije postojećeg člana, uključujući produženje preplate.
