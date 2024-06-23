@@ -2,7 +2,7 @@
 
 ## Use case
 
-![Use Case Diagram](Teretana PIS.png)
+![Use Case Diagram](https://imgur.com/a/iAgHgi3)
 
 Ovaj web servis omogućava administratorima teretane upravljanje članovima teretane putem sljedećih funkcionalnosti:
 - **Dodavanje člana**: Administrator može dodati novog člana u sustav s osnovnim informacijama kao što su ime, prezime, i trajanje preplate.
