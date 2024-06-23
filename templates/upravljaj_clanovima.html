@@ -2,41 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Members</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Manage Members</h1>
-    <a href="{{ url_for('dodaj_clana') }}">Add Member</a>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Subscription</th>
-            <th>Subscription Date</th>
-            <th>Expires</th>
-            <th>Actions</th>
-        </tr>
-        {% for clan in clanovi %}
-        <tr>
-            <td>{{ clan.korisnik_id }}</td>
-            <td>{{ clan.ime }}</td>
-            <td>{{ clan.prezime }}</td>
-            <td>{{ 'Yes' if clan.preplata else 'No' }}</td>
-            <td>{{ clan.preplata_datum }}</td>
-            <td>{{ clan.preplata_istece }}</td>
-            <td>
-                <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}">Update</a>
-                <form action="{{ url_for('delete_clana', korisnik_id=clan.korisnik_id) }}" method="post" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <form action="{{ url_for('reset_ids') }}" method="post">
-        <button type="submit">Reset IDs</button>
-    </form>
+    <div class="container">
+        <h1>Manage Members</h1>
+        <div class="navbar">
+            <button onclick="window.location.href='{{ url_for('index') }}'">Members List</button>
+            <button onclick="window.location.href='{{ url_for('dodaj_clana') }}'">Add Member</button>
+            <form action="{{ url_for('reset_ids') }}" method="post" style="display:inline;">
+                <button class="reset-ids" type="submit">Reset IDs</button>
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Subscription Start</th>
+                    <th>Subscription End</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for clan in clanovi %}
+                <tr>
+                    <td>{{ clan.korisnik_id }}</td>
+                    <td>{{ clan.ime }}</td>
+                    <td>{{ clan.prezime }}</td>
+                    <td>{{ clan.preplata_datum }}</td>
+                    <td>{{ clan.preplata_istece }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}" class="update">Update</a>
+                        <form action="{{ url_for('delete_clana', korisnik_id=clan.korisnik_id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

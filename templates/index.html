@@ -2,38 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Members</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Members</h1>
-    <a href="{{ url_for('dodaj_clana') }}">Add Member</a>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Subscription</th>
-            <th>Subscription Date</th>
-            <th>Expires</th>
-            <th>Actions</th>
-        </tr>
-        {% for clan in clanovi %}
-        <tr>
-            <td>{{ clan.korisnik_id }}</td>
-            <td>{{ clan.ime }}</td>
-            <td>{{ clan.prezime }}</td>
-            <td>{{ 'Yes' if clan.preplata else 'No' }}</td>
-            <td>{{ clan.preplata_datum }}</td>
-            <td>{{ clan.preplata_istece }}</td>
-            <td>
-                <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}">Update</a>
-                <form action="{{ url_for('delete_clana', korisnik_id=clan.korisnik_id) }}" method="post" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h1>Members List</h1>
+        <div class="navbar">
+            <button onclick="window.location.href='{{ url_for('dodaj_clana') }}'">Add Member</button>
+            <button onclick="window.location.href='{{ url_for('upravljaj_clanovima') }}'">Manage Members</button>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Subscription Start</th>
+                    <th>Subscription End</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for clan in clanovi %}
+                <tr>
+                    <td>{{ clan.korisnik_id }}</td>
+                    <td>{{ clan.ime }}</td>
+                    <td>{{ clan.prezime }}</td>
+                    <td>{{ clan.preplata_datum }}</td>
+                    <td>{{ clan.preplata_istece }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

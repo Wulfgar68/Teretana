@@ -2,23 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Clan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Member</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Update Clan</h1>
-    <form action="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}" method="POST">
-        <label for="ime">Ime:</label>
-        <input type="text" id="ime" name="ime" value="{{ clan.ime }}" required><br><br>
-        <label for="prezime">Prezime:</label>
-        <input type="text" id="prezime" name="prezime" value="{{ clan.prezime }}" required><br><br>
-        <label for="preplata_datum">Datum Početka Preplate:</label>
-        <input type="date" id="preplata_datum" name="preplata_datum" value="{{ clan.preplata_datum }}" required><br><br>
-        <label for="preplata_istece">Datum Isteka Preplate:</label>
-        <input type="date" id="preplata_istece" name="preplata_istece" value="{{ clan.preplata_istece }}" required><br><br>
-        <label for="extend_duration">Produži Preplatu (u mjesecima):</label>
-        <input type="number" id="extend_duration" name="extend_duration" min="0" value="0"><br><br>
-        <input type="submit" value="Azuriraj Clana">
-    </form>
+    <div class="container">
+        <h2>Update Member</h2>
+        <form method="POST">
+            <label for="ime">First Name:</label>
+            <input type="text" id="ime" name="ime" value="{{ clan.ime }}" required>
+
+            <label for="prezime">Last Name:</label>
+            <input type="text" id="prezime" name="prezime" value="{{ clan.prezime }}" required>
+
+            <label for="preplata_datum">Subscription Start Date:</label>
+            <input type="date" id="preplata_datum" name="preplata_datum" value="{{ clan.preplata_datum }}" required>
+
+            <label for="preplata_istece">Subscription End Date:</label>
+            <input type="date" id="preplata_istece" name="preplata_istece" value="{{ clan.preplata_istece }}" required>
+
+            <label for="preplata_duration">Extend Subscription (months):</label>
+            <select id="preplata_duration" name="preplata_duration">
+                <option value="">Select</option>
+                <option value="1">1 month</option>
+                <option value="3">3 months</option>
+                <option value="6">6 months</option>
+                <option value="12">12 months</option>
+            </select>
+
+            <button type="submit">Update</button>
+        </form>
+        <form action="{{ url_for('upravljaj_clanovima') }}" method="get">
+            <button type="submit">Manage Members</button>
+        </form>
+    </div>
 </body>
 </html>
