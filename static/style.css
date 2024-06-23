@@ -1,74 +1,106 @@
+/* static/style.css */
+
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-form label {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-form input[type="text"],
-form input[type="date"] {
-    display: block;
-    width: calc(100% - 22px);
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-form input[type="checkbox"] {
-    display: inline-block;
-}
-
-form button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background-color: #45a049;
-}
-
-ul {
-    list-style-type: none;
+    background-color: #f4f4f4;
+    margin: 0;
     padding: 0;
 }
 
-li {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
 }
 
-.member-details {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #0779e4 3px solid;
 }
 
-.member-details h2 {
-    margin-top: 0;
+header a, header a:visited {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button, input[type="submit"] {
+    background-color: #0779e4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0654ba;
+}
+
+form {
+    margin: 20px 0;
+    text-align: center;
 }
 
 a {
-    display: inline-block;
-    margin-top: 20px;
+    color: #0779e4;
     text-decoration: none;
-    color: #4CAF50;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #0654ba;
+}
+
+.flash-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 4px;
 }

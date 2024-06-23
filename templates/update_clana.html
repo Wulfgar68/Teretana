@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Clan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Update Clan</h1>
+    <form action="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}" method="POST">
+        <label for="ime">Ime:</label>
+        <input type="text" id="ime" name="ime" value="{{ clan.ime }}" required><br><br>
+        <label for="prezime">Prezime:</label>
+        <input type="text" id="prezime" name="prezime" value="{{ clan.prezime }}" required><br><br>
+        <label for="preplata_datum">Datum Početka Preplate:</label>
+        <input type="date" id="preplata_datum" name="preplata_datum" value="{{ clan.preplata_datum }}" required><br><br>
+        <label for="preplata_istece">Datum Isteka Preplate:</label>
+        <input type="date" id="preplata_istece" name="preplata_istece" value="{{ clan.preplata_istece }}" required><br><br>
+        <label for="extend_duration">Produži Preplatu (u mjesecima):</label>
+        <input type="number" id="extend_duration" name="extend_duration" min="0" value="0"><br><br>
+        <input type="submit" value="Azuriraj Clana">
+    </form>
+</body>
+</html>

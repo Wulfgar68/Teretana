@@ -1,27 +1,34 @@
-{% extends "osnova.html" %}
-
-{% block title %}Dodaj Člana{% endblock %}
-
-{% block content %}
-    <h1>Dodaj Člana</h1>
-    <form action="{{ url_for('dodaj_clana') }}" method="post">
-        <div class="mb-3">
-            <label for="ime" class="form-label">Ime</label>
-            <input type="text" class="form-control" id="ime" name="ime" required>
-        </div>
-        <div class="mb-3">
-            <label for="prezime" class="form-label">Prezime</label>
-            <input type="text" class="form-control" id="prezime" name="prezime" required>
-        </div>
-        <div class="mb-3">
-            <label for="preplata" class="form-label">Preplata</label>
-            <select class="form-select" id="preplata" name="preplata" required>
-                <option value="1">1 mjesec</option>
-                <option value="3">3 mjeseca</option>
-                <option value="6">6 mjeseci</option>
-                <option value="12">1 godina</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Dodaj člana</button>
-    </form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj Clan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Dodaj Clan</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="ime">Ime</label>
+                <input type="text" id="ime" name="ime" required>
+            </div>
+            <div class="form-group">
+                <label for="prezime">Prezime</label>
+                <input type="text" id="prezime" name="prezime" required>
+            </div>
+            <div class="form-group">
+                <label for="preplata_duration">Preplata Duration</label>
+                <select id="preplata_duration" name="preplata_duration">
+                    <option value="1">1 Month</option>
+                    <option value="3">3 Months</option>
+                    <option value="6">6 Months</option>
+                    <option value="12">1 Year</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Dodaj Clan</button>
+        </form>
+    </div>
+</body>
+</html>

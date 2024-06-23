@@ -1,48 +1,42 @@
-{% extends "osnova.html" %}
-
-{% block title %}Upravljaj Članovima{% endblock %}
-
-{% block content %}
-    <h1>Upravljaj Članovima</h1>
-    <form class="d-flex mb-3" action="{{ url_for('upravljaj_clanovima') }}" method="get">
-        <input class="form-control me-2" type="search" placeholder="Pretraži po prezimenu" aria-label="Pretraži" name="query" value="{{ query }}">
-        <button class="btn btn-outline-success" type="submit">Pretraži</button>
-        <a class="btn btn-outline-secondary ms-2" href="{{ url_for('upravljaj_clanovima') }}">Resetiraj filtre</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Members</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Manage Members</h1>
+    <a href="{{ url_for('dodaj_clana') }}">Add Member</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Subscription</th>
+            <th>Subscription Date</th>
+            <th>Expires</th>
+            <th>Actions</th>
+        </tr>
+        {% for clan in clanovi %}
+        <tr>
+            <td>{{ clan.korisnik_id }}</td>
+            <td>{{ clan.ime }}</td>
+            <td>{{ clan.prezime }}</td>
+            <td>{{ 'Yes' if clan.preplata else 'No' }}</td>
+            <td>{{ clan.preplata_datum }}</td>
+            <td>{{ clan.preplata_istece }}</td>
+            <td>
+                <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}">Update</a>
+                <form action="{{ url_for('delete_clana', korisnik_id=clan.korisnik_id) }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="{{ url_for('reset_ids') }}" method="post">
+        <button type="submit">Reset IDs</button>
     </form>
-    {% for clan in clanovi %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">{{ clan.prezime }}, {{ clan.ime }}</h5>
-                <p class="card-text">Preplata: {{ 'Da' if clan.preplata else 'Ne' }}</p>
-                <p class="card-text">Datum preplate: {{ clan.preplata_datum }}</p>
-                <p class="card-text">Datum isteka preplate: {{ clan.preplata_istece }}</p>
-                <form action="{{ url_for('azuriraj_clana', korisnik_id=clan.korisnik_id) }}" method="post" class="mb-3">
-                    <div class="mb-3">
-                        <label for="ime" class="form-label">Ime</label>
-                        <input type="text" class="form-control" id="ime" name="ime" value="{{ clan.ime }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="prezime" class="form-label">Prezime</label>
-                        <input type="text" class="form-control" id="prezime" name="prezime" value="{{ clan.prezime }}" required>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="preplata" name="preplata" {% if clan.preplata %}checked{% endif %}>
-                        <label class="form-check-label" for="preplata">Preplata</label>
-                    </div>
-                    <div class="mb-3">
-                        <label for="preplata_datum" class="form-label">Datum preplate</label>
-                        <input type="date" class="form-control" id="preplata_datum" name="preplata_datum" value="{{ clan.preplata_datum }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="preplata_istece" class="form-label">Datum isteka preplate</label>
-                        <input type="date" class="form-control" id="preplata_istece" name="preplata_istece" value="{{ clan.preplata_istece }}" required>
-                    </div>
-                    <button type="submit" class="btn btn-success">Ažuriraj</button>
-                </form>
-                <form action="{{ url_for('izbrisi_clana', korisnik_id=clan.korisnik_id) }}" method="post">
-                    <button type="submit" class="btn btn-danger">Izbriši</button>
-                </form>
-            </div>
-        </div>
-    {% endfor %}
-{% endblock %}
+</body>
+</html>

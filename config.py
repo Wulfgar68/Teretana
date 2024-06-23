@@ -1,8 +1,4 @@
-# config.py
-import os
-
-MYSQL_HOST = os.environ.get('MYSQL_HOST', 'db')
-MYSQL_USER = os.environ.get('MYSQL_USER', 'luka_pis')
-MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD', 'luka23012005')
-MYSQL_DB = os.environ.get('MYSQL_DATABASE', 'luka_pis')
-MYSQL_CURSORCLASS = 'DictCursor'
+class Config:
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://luka_pis:luka23012005@db:3306/luka_pis'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'your_super_secret_key'  # Change this to a strong random value
