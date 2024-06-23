@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members List</title>
+    <title>Popis članova</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <div class="container">
-    <h1>Members List</h1>
+    <h1>Popis članova</h1>
     <div class="button-group">
-        <a href="/dodaj_clana" class="button">Add Member</a>
-        <a href="/upravljaj_clanovima" class="button">Manage Members</a>
+        <a href="/dodaj_clana" class="button">Dodaj člana</a>
+        <a href="/upravljaj_clanovima" class="button">Upravljanje članovima</a>
         <div class="search-group">
             <form action="/" method="GET">
-                <input type="text" name="search_name" placeholder="First Name">
-                <input type="text" name="search_lastname" placeholder="Last Name">
-                <button type="submit" class="button">Search</button>
+                <input type="text" name="search_name" placeholder="Ime">
+                <input type="text" name="search_lastname" placeholder="Prezime">
+                <button type="submit" class="button">Pretraži</button>
             </form>
         </div>
     </div>
@@ -24,10 +24,10 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Subscription Start</th>
-            <th>Subscription End</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Pocetak preplate</th>
+            <th>Završetak preplate</th>
         </tr>
         </thead>
         <tbody>

@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Member</title>
+    <title>Dodaj člana</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Add Member</h1>
+        <h1>Dodaj člana</h1>
         <form method="POST">
-            <label for="ime">First Name:</label>
+            <label for="ime">Ime:</label>
             <input type="text" id="ime" name="ime" required>
 
-            <label for="prezime">Last Name:</label>
+            <label for="prezime">Prezime:</label>
             <input type="text" id="prezime" name="prezime" required>
 
-            <label for="preplata_duration">Subscription Duration:</label>
+            <label for="preplata_duration">Trajanje preplate:</label>
             <select id="preplata_duration" name="preplata_duration" required>
-                <option value="1">1 month</option>
-                <option value="3">3 months</option>
-                <option value="6">6 months</option>
-                <option value="12">1 year</option>
+                <option value="1">1 mjesec</option>
+                <option value="3">3 mjeseca</option>
+                <option value="6">6 mjeseci</option>
+                <option value="12">12 mjeseci</option>
             </select>
 
             <div class="button-group">
-                <button type="submit">Add Member</button>
-                <a href="{{ url_for('upravljaj_clanovima') }}">Manage Members</a>
+                <button type="submit">Dodaj člana</button>
+                <a href="{{ url_for('upravljaj_clanovima') }}">Upravljaj članovima</a>
             </div>
         </form>
     </div>

@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Member</title>
+    <title>Ažuriranje člana</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h2>Update Member</h2>
+        <h2>Ažuriranje člana</h2>
         <form method="POST">
-            <label for="ime">First Name:</label>
+            <label for="ime">Ime</label>
             <input type="text" id="ime" name="ime" value="{{ clan.ime }}" required>
 
-            <label for="prezime">Last Name:</label>
+            <label for="prezime">Prezime:</label>
             <input type="text" id="prezime" name="prezime" value="{{ clan.prezime }}" required>
 
-            <label for="preplata_datum">Subscription Start Date:</label>
+            <label for="preplata_datum">Pocetak preplate:</label>
             <input type="date" id="preplata_datum" name="preplata_datum" value="{{ clan.preplata_datum }}" required>
 
-            <label for="preplata_istece">Subscription End Date:</label>
+            <label for="preplata_istece">Zavrsetak preplate:</label>
             <input type="date" id="preplata_istece" name="preplata_istece" value="{{ clan.preplata_istece }}" required>
 
-            <label for="preplata_duration">Extend Subscription (months):</label>
+            <label for="preplata_duration">Produži preplatu (u mjesecima):</label>
             <select id="preplata_duration" name="preplata_duration">
-                <option value="">Select</option>
-                <option value="1">1 month</option>
-                <option value="3">3 months</option>
-                <option value="6">6 months</option>
-                <option value="12">12 months</option>
+                <option value="">Odaberi</option>
+                <option value="1">1 mjesec</option>
+                <option value="3">3 mjeseca</option>
+                <option value="6">6 mjeseci</option>
+                <option value="12">12 mjeseci</option>
             </select>
 
-            <button type="submit">Update</button>
+            <button type="submit">Ažuriraj</button>
         </form>
         <form action="{{ url_for('upravljaj_clanovima') }}" method="get">
-            <button type="submit">Manage Members</button>
+            <button type="submit">Upravljanje članovima</button>
         </form>
     </div>
 </body>

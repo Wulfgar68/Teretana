@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Members</title>
+    <title>Upravljanje članovima</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Manage Members</h1>
+        <h1>Upravljanje članovima</h1>
         <div class="navbar">
-            <button onclick="window.location.href='{{ url_for('index') }}'">Members List</button>
-            <button onclick="window.location.href='{{ url_for('dodaj_clana') }}'">Add Member</button>
+            <button onclick="window.location.href='{{ url_for('index') }}'">Popis članova</button>
+            <button onclick="window.location.href='{{ url_for('dodaj_clana') }}'">Dodaj člana</button>
             <form action="{{ url_for('reset_ids') }}" method="post" style="display:inline;">
-                <button class="reset-ids" type="submit">Reset IDs</button>
+                <button class="reset-ids" type="submit">Reset ID</button>
             </form>
         </div>
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Subscription Start</th>
-                    <th>Subscription End</th>
-                    <th>Actions</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Pocetak preplate</th>
+                    <th>Završetak preplate</th>
+                    <th>Opcije</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,9 +36,9 @@
                     <td>{{ clan.preplata_datum }}</td>
                     <td>{{ clan.preplata_istece }}</td>
                     <td class="actions">
-                        <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}" class="update">Update</a>
+                        <a href="{{ url_for('update_clana', korisnik_id=clan.korisnik_id) }}" class="update">Ažuriraj</a>
                         <form action="{{ url_for('delete_clana', korisnik_id=clan.korisnik_id) }}" method="post" style="display:inline;">
-                            <button type="submit" class="delete">Delete</button>
+                            <button type="submit" class="delete">Izbriši</button>
                         </form>
                     </td>
                 </tr>
