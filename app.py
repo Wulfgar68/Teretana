@@ -18,9 +18,18 @@ class Clan(db.Model):
     preplata_datum = db.Column(db.Date, nullable=False)
     preplata_istece = db.Column(db.Date, nullable=False)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    clanovi = Clan.query.all()
+    search_name = request.args.get('search_name', '')
+    search_lastname = request.args.get('search_lastname', '')
+    
+    query = Clan.query
+    if search_name:
+        query = query.filter(Clan.ime.like(f'%{search_name}%'))
+    if search_lastname:
+        query = query.filter(Clan.prezime.like(f'%{search_lastname}%'))
+    
+    clanovi = query.all()
     return render_template('index.html', clanovi=clanovi)
 
 @app.route('/dodaj_clana', methods=['GET', 'POST'])
