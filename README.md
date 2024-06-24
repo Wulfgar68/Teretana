@@ -11,40 +11,6 @@ Ovaj web servis omogućava administratorima teretane upravljanje članovima tere
 - **Pretraga članova**: Administrator može pretraživati članove prema imenu i prezimenu.
 - **Resetiranje ID-eva**: Administrator može resetirati ID-eve članova kako bi bili kontinuirani bez praznina.
 
-## Pokretanje web servisa s Docker-om
-
-1. **Preduvjeti**:
-    - Instaliran Docker i Docker Compose.
-
-2. **Pokretanje servisa**:
-    - U terminalu, navigirajte do direktorija projekta.
-    - Pokrenite Docker kontejnere s naredbom:
-      ```bash
-      docker-compose up
-      ```
-
-3. **Pristup servisu**:
-    - Nakon što su kontejneri pokrenuti, servis će biti dostupan na `http://localhost:5000`.
-
-## Pokretanje aplikacije lokalno (bez Docker-a)
-
-1. **Preduvjeti**:
-    - Instaliran Python (preporučuje se verzija 3.9).
-    - Instalirane potrebne knjižnice. To možete učiniti pokretanjem sljedeće naredbe u direktoriju projekta:
-      ```bash
-      pip install -r requirements.txt
-      ```
-
-2. **Pokretanje servisa**:
-    - U terminalu, navigirajte do direktorija projekta.
-    - Pokrenite aplikaciju s naredbom:
-      ```bash
-      flask run
-      ```
-
-3. **Pristup servisu**:
-    - Nakon što je aplikacija pokrenuta, servis će biti dostupan na `http://localhost:5000`.
-
 ## Prolazak kroz funkcionalnosti web servisa
 
 1. **Dodavanje člana**:
